@@ -1,0 +1,8 @@
+- name: Install Volta
+  args:
+    warn: false
+  shell: curl https://get.volta.sh | bash
+- name: Install Node 14
+  shell: /bin/zsh
+  # shell: /root/.volta/bin/volta install node@14
+  shell: volta install node@14
