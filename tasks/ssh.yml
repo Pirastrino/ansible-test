@@ -3,6 +3,7 @@
   copy:
     src: "./.ssh"
     dest: "{{ home }}"
+    owner: "{{ user }}:{{ user }}"
     mode: 0600
   tags:
     - dotfiles
