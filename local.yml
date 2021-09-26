@@ -1,8 +1,8 @@
 - hosts: localhost
   become: true
-  vars:
-    source_key: "./.ssh/id_ed25519"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_id25519"
+  # vars:
+  #   source_ssh: "./.ssh"
+  #   dest_ssh: "{{ lookup('env', 'HOME') }}/.ssh"
   pre_tasks:
     - name: update repositories
       apt: update_cache=yes
