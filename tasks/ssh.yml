@@ -1,4 +1,5 @@
 - name: Copy .gitconfig
+  become: true
   become_user: "{{ lookup('env', 'USER') }}"
   copy:
     src: "./.gitconfig"
@@ -21,6 +22,7 @@
 #     - ssh
 
 - name: Copy keys
+  become: true
   become_user: "{{ lookup('env', 'USER') }}"
   copy:
     src: "./.ssh"
