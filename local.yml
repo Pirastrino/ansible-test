@@ -2,9 +2,7 @@
   become: true
   vars:
     user: "{{ lookup('env', 'USER') }}"
-  # vars:
-  #   source_ssh: "./.ssh"
-  #   dest_ssh: "{{ lookup('env', 'HOME') }}/.ssh"
+    home: "{{ lookup('env', 'HOME') }}"
   pre_tasks:
     - name: update repositories
       apt: update_cache=yes

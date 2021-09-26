@@ -1,53 +1,20 @@
-- name: Copy .gitconfig
-  become_user: "{{ user }}"
-  copy:
-    src: "./.gitconfig"
-    dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
-    mode: 0600
-  tags:
-    - dotfiles
-    - install
-    - ssh
-
-# - name: Ensure .ssh directory exists
-#   become_user: "{{ lookup('env', 'USER') }}"
-#   file:
-#     dest: "{{ dest_key | dirname }}"
-#     mode: 0700
-#     state: directory
-#   tags:
-#     - dotfiles
-#     - install
-#     - ssh
-
 - name: Copy keys
   become_user: "{{ user }}"
   copy:
     src: "./.ssh"
-    dest: "{{ lookup('env', 'HOME') }}"
+    dest: "{{ home }}"
     mode: 0600
   tags:
     - dotfiles
     - install
     - ssh
-
-# - name: Install ssh key
-#   become_user: "{{ lookup('env', 'USER') }}"
-#   copy:
-#     src: "{{ source_key }}"
-#     dest: "{{ dest_key }}"
-#     mode: 0600
-#   tags:
-#     - dotfiles
-#     - install
-#     - ssh
 
 # https://docs.ansible.com/ansible/2.5/modules/authorized_key_module.html#examples
 - name: Set authorized key
   authorized_key:
     user: "{{ user }}"
     state: present
-    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ed25519.pub') }}"
+    key: "{{ lookup('file', home + '/.ssh/id_ed25519.pub') }}"
   tags:
     - dotfiles
     - install
