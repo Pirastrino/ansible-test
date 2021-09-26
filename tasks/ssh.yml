@@ -2,7 +2,7 @@
   become_user: "{{ lookup('env', 'USER') }}"
   copy:
     src: "./.gitconfig"
-    dest: "{{ lookup('env', 'HOME") }}/.gitconfig"
+    dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
     mode: 0600
   tags:
     - dotfiles
