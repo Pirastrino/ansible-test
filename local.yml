@@ -1,5 +1,7 @@
 - hosts: localhost
   become: true
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
   # vars:
   #   source_ssh: "./.ssh"
   #   dest_ssh: "{{ lookup('env', 'HOME') }}/.ssh"
